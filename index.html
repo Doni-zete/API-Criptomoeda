@@ -28,8 +28,11 @@
 
         //GET Fetch Requisition
         // fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=${apikey.key}`)
-        fetch(`pro-api.coinmarketcap.com/`)
+        fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=de4cd560-617e-4737-8a3a-487d0a668c3d`)
             .then((response) => {
+
+                   
+
                 if (!response.ok) throw new Error('Erro ao executar a requisição, status ' + response.status);
                 return response.json();
             })
@@ -39,7 +42,8 @@
                 // Get 10 coins and symbols 
                 for (let i = 0; i < 10; i++) {
 
-
+                    console.log (response)
+                    debugger
 
                     //Show API information
 
