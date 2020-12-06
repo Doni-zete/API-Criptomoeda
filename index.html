@@ -26,45 +26,55 @@
             key: 'de4cd560-617e-4737-8a3a-487d0a668c3d'
         }
 
+        const myHeaders = new Headers({
+            'X-CMC_PRO_API_KEY': apikey.key
+        });
+
         //GET Fetch Requisition
-        // fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=${apikey.key}`)
-        fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=de4cd560-617e-4737-8a3a-487d0a668c3d`)
+        // fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=${apikey.key}`,
+        fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?id=1,2,10`,
+        // fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`,
+        // fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?sort=market_cap`,
+         { 
+                method: 'GET',
+                mode: "cors",
+                headers: myHeaders,
+            },
+
+        )
             .then((response) => {
 
-                   
+                debugger
 
-                if (!response.ok) throw new Error('Erro ao executar a requisição, status ' + response.status);
-                return response.json();
+                return response;
             })
             .then((api) => {
 
-                var texto = "";
-                // Get 10 coins and symbols 
-                for (let i = 0; i < 10; i++) {
+                // var texto = "t";
+                // // Get 10 coins and symbols 
+                // for (let i = 0; i < 10; i++) {
 
-                    console.log (response)
-                    debugger
 
-                    //Show API information
+                //     //Show API information
 
-                    texto = texto + `
-                  
-                    <div class="media">
-                        <img src="coin.jpg" class="align-self-center mr-3" alt="coin" width="100" height="60">
-                        <div class="media-body">
-                        <h5 class="mt-2">${api.data[i].name}</h5>
-                        <p>${api.data[i].symbol}</p>
-                        </div>
-                    </div>
-               
-                    `;
+                //     texto = texto + `
 
-                    document.getElementById("coins").innerHTML = texto;
+                //     <div class="media">
+                //         <img src="coin.jpg" class="align-self-center mr-3" alt="coin" width="100" height="60">
+                //         <div class="media-body">
+                //         <h5 class="mt-2">${api.data[i].name}</h5>
+                //         <p>${api.data[i].symbol}</p>
+                //         </div>
+                //     </div>
 
-                }
+                //     `;
+
+                //     document.getElementById("coins").innerHTML = texto;
+
+                // }
             })
             .catch((error) => {
-                console.error(error.message);
+                console.error(error);
             });
     </script>
 </body>
